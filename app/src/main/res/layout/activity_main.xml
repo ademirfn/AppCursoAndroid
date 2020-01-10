@@ -29,7 +29,7 @@
         android:layout_marginTop="49dp"
         android:layout_marginEnd="31dp"
         android:layout_marginBottom="60dp"
-        android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed posuere malesuada rutrum. Phasellus commodo metus dictum consequat congue. Nunc vel molestie nisl. Nullam est mauris, scelerisque imperdiet lacus at, malesuada pharetra lorem. Cras non sagittis eros, vitae eleifend dolor. Etiam ac odio tempor, fringilla nisi vel, rhoncus tellus. Quisque ac lorem sit amet ligula lacinia consectetur eu at nulla."
+        android:text="@string/lipsum"
 
         android:textAlignment="center"
         app:layout_constraintBottom_toTopOf="@+id/angry_btn"
