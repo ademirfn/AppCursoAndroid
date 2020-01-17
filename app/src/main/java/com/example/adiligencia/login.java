@@ -22,4 +22,9 @@ public class login extends AppCompatActivity {
         Intent intent = new Intent(this, home.class);
         startActivity(intent);
     }
+    public void cadastrar(View view){
+
+        Intent intent = new Intent(this, cadastrar.class);
+        startActivity(intent);
+    }
 }
