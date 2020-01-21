@@ -11,27 +11,27 @@ public class CriaBanco extends SQLiteOpenHelper {
     public static final String NOME = "nome";
     public static final String EMAIL = "email";
     public static final String SENHA = "senha";
-    private static final int VERSAO = 1;
+    private static final int VERSAO = 2;
+
 
     public CriaBanco(Context context){
-        super(context, NOME_BANCO,null,VERSAO);
+        super(context, "banco.db",null,VERSAO);
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String sql = "CREATE TABLE "+TABELA+"("
-                + ID + " integer primary key autoincrement,"
-                + NOME + " text,"
-                + EMAIL + " text,"
-                + SENHA + " text"
+        //criar tabela
+        String sql = "CREATE TABLE "+TABELA+"("+ID+" integer primary key autoincrement,"
+                +NOME+" text,"
+                +EMAIL+" text,"
+                +SENHA+" text"
                 +")";
-
         db.execSQL(sql);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL("DROP TABLE [IF EXISTS]." + TABELA);
+        db.execSQL("DROP TABLE IF EXISTS usuarios");
         onCreate(db);
     }
 }

@@ -47,7 +47,7 @@
         app:srcCompat="@drawable/logo" />
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/tiEmailLogin"
         android:layout_width="312dp"
         android:layout_height="54dp"
         android:layout_marginStart="50dp"
@@ -67,7 +67,7 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/tiSenhaLogin"
         android:layout_width="313dp"
         android:layout_height="48dp"
         android:layout_marginStart="50dp"
@@ -83,7 +83,7 @@
         android:theme="@style/MyEditTextTheme"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText" />
+        app:layout_constraintTop_toBottomOf="@+id/tiEmailLogin" />
 
     <Button
         android:id="@+id/button"
@@ -97,7 +97,7 @@
         android:textColor="@color/branco"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText2" />
+        app:layout_constraintTop_toBottomOf="@+id/tiSenhaLogin" />
 
     <Button
         android:id="@+id/button2"
@@ -129,9 +129,9 @@
         android:background="@drawable/buttoentrar"
         android:drawableLeft="@drawable/iconleft"
 
-        android:onClick="proximaTela"
-
         android:drawablePadding="3dp"
+
+        android:onClick="login"
         android:paddingLeft="70dp"
         android:paddingRight="70dp"
 
