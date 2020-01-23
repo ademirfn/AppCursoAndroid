@@ -14,6 +14,8 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+import com.google.android.gms.maps.model.CircleOptions;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.PolylineOptions;
@@ -59,8 +61,13 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         // Add a marker in Sydney and move the camera
         LatLng sydney = new LatLng(-29.7549941, -51.150283);
         LatLng esteio = new LatLng(-29.8524632,  -51.1845758 );
-        mMap.addMarker(new MarkerOptions().position(esteio).title("Marker em Esteio"));
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker em São Leopoldo"));
+
+        mMap.addMarker(new MarkerOptions().position(esteio).title("51981384415").icon(
+                BitmapDescriptorFactory.fromResource(R.drawable.pin))   );
+
+
+        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker em São Leopoldo").icon(
+                BitmapDescriptorFactory.fromResource(R.drawable.pin)));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
 
         //setar o zoom do mapa
@@ -73,6 +80,16 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                 .add(sydney, esteio)
                 .width(10)
                 .color(Color.GREEN));
+
+        mMap.addCircle(
+                new CircleOptions()
+                        .center(esteio)
+                        .radius(1580.0)
+                        .strokeWidth(3f)
+                        .strokeColor(Color.RED)
+                        .fillColor(Color.argb(70,150,50,50))
+
+        );
 
 
 
