@@ -3,12 +3,17 @@ package com.example.adiligencia;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.ContextCompat;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentActivity;
 
+import android.Manifest;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -22,8 +27,14 @@ import com.google.android.gms.maps.model.PolylineOptions;
 
 public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback {
     private DrawerLayout drawer;
-
     private GoogleMap mMap;
+    
+    //declara variaveis para permissão location
+    private static final String[] LOCATION_PERMS={
+            Manifest.permission.ACCESS_FINE_LOCATION
+    };
+    private static final int INITIAL_REQUEST=1337;
+    private static final int LOCATION_REQUEST=INITIAL_REQUEST+3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,6 +85,22 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(sydney, 12.0f));
         //mostra controles de zoom
         mMap.getUiSettings().setZoomControlsEnabled(true);
+
+        //verifica se é permitido ao aplicativo pegar a localização atual do dispositivo
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
+                == PackageManager.PERMISSION_GRANTED) {
+            mMap.setMyLocationEnabled(true);
+        } else {
+         //caso ainda não tenha sido dada a permissão, solicitar a permissão
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                requestPermissions(LOCATION_PERMS, LOCATION_REQUEST);
+            }
+        }
+
+
+
+        mMap.getUiSettings().setMyLocationButtonEnabled(true);
+        mMap.getUiSettings().setCompassEnabled(true);
 
         //adiciona rota
         mMap.addPolyline(new PolylineOptions()
